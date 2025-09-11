@@ -49,6 +49,10 @@ let perguntaAtual;
 let historiaFinal = "";
 
 function mostraPergunta() {
+    if (atual >= perguntas.length){
+        mostraResultado();
+        return;
+    }
     perguntaAtual = pergunta[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     caixaAlternativas.textContent = "";
