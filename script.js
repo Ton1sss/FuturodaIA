@@ -6,7 +6,7 @@ const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
-        enunciado: "Você já utiliza ou já utilizou alguma IA?",
+        enunciado: "Você utiliza ou já utilizou alguma IA?",
         alternativas: ["Sim.", "Não."]
     },
     {
