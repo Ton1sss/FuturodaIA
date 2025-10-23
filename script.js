@@ -1,47 +1,30 @@
 const caixaPrincipal = document.querySelector(".caixa-principal");
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
-const caixaAlternativa = document.querySelector(".caixa-alternativas");
+const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
-        enunciado:
-        "Vocẽ já utiliza ou já utilizou alguma IA?",
-        
-        alternativas: ["Sim.","Não."],
-
+        enunciado: "Você já utiliza ou já utilizou alguma IA?",
+        alternativas: ["Sim.", "Não."]
     },
- 
-     {
-        enunciado:
-        "Você não consegue esncontrar o nome de um filme , que você assistiu há anos, mas com apenas alguns detalhes, a IA consegue encontrar para você em seguntos , isso:",
-        alternativas: ["Me assusta.","Me deixa animado."],
-     
+    {
+        enunciado: "Você não consegue encontrar o nome de um filme, mas com apenas alguns detalhes a IA consegue encontrar para você em segundos. Isso:",
+        alternativas: ["Me assusta.", "Me deixa animado."]
     },
- 
-     {
-        enunciado:
-        "Qual é a sua opnião sobre a IA no dia a dia?",
-        alternativas: ["Positiva.","Negativa."],
-
+    {
+        enunciado: "Qual é a sua opinião sobre a IA no dia a dia?",
+        alternativas: ["Positiva.", "Negativa."]
     },
-
-     {
-        enunciado:
-        "Você acha que a IA vem deixado as pessoas mais  burras?",
-        alternativas: ["Sim.","Não."],
-
+    {
+        enunciado: "Você acha que a IA vem deixando as pessoas mais burras?",
+        alternativas: ["Sim.", "Não."]
     },
-
-     {
-        enunciado:
-        "Você passa horas para tirar uma foto, um desenho, e seu amigo, apenas pedindo pra IA, ele consegue fazer uma imagem melhor e de maneira mais rápida, isso:",
-
-         alternativas: ["Me desanima.","Me anima."],
-
-    },
-
+    {
+        enunciado: "Você passa horas para tirar uma foto, e seu amigo, pedindo pra IA, consegue algo melhor e mais rápido. Isso:",
+        alternativas: ["Me desanima.", "Me anima."]
+    }
 ];
 
 let atual = 0;
@@ -49,35 +32,37 @@ let perguntaAtual;
 let historiaFinal = "";
 
 function mostraPergunta() {
-    if (atual >= perguntas.length){
+    if (atual >= perguntas.length) {
         mostraResultado();
         return;
     }
-    perguntaAtual = pergunta[atual];
+
+    perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = "";
+    caixaAlternativas.innerHTML = ""; // limpa as alternativas
+
     mostraAlternativas();
 }
 
-function mostraAlternativas(){
-    for (const alternativas of perguntaAtual.alternativas){
-        const botaoAlternativas = document.createElement("button");
-        botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.addEventListener("click",() => respostaSelecionada(alternativa));
-        caixaAlternativas.appendChild(botaoAlternativas);
+function mostraAlternativas() {
+    for (const alternativa of perguntaAtual.alternativas) {
+        const botao = document.createElement("button");
+        botao.textContent = alternativa;
+        botao.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botao);
     }
 }
-function respostaSelecionada(opcaoSelecionada){
-const afirmacoes = opcaoSelecionada.afirmacoes;
-historiaFinal += afirmacoes + "";
-atual++;
-mostraPergunta();
+
+function respostaSelecionada(opcaoSelecionada) {
+    historiaFinal += opcaoSelecionada + " ";
+    atual++;
+    mostraPergunta();
 }
 
-function mostraResultado(){
-    caixaPerguntas.textContent = "pergunta";
+function mostraResultado() {
+    caixaPerguntas.textContent = "Suas respostas:";
+    caixaAlternativas.innerHTML = "";
     textoResultado.textContent = historiaFinal;
-    caixaAlternativa.textContent = "resposta";
 }
 
 mostraPergunta();
