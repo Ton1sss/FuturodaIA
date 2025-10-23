@@ -10,7 +10,7 @@ const perguntas = [
         alternativas: ["Sim.", "Não."]
     },
     {
-        enunciado: "Você não consegue encontrar o nome de um filme, mas dando apenas alguns detalhes sobre ele a IA consegue encontrar para você em segundos. Isso:",
+        enunciado: "Você não consegue encontrar o nome de um filme, mas dando apenas alguns detalhes sobre ele, a IA consegue encontrar para você em segundos. Isso:",
         alternativas: ["Me assusta.", "Me deixa animado."]
     },
     {
