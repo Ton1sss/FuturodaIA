@@ -75,9 +75,9 @@ mostraPergunta();
 }
 
 function mostraResultado(){
-    caixaPerguntas.textContent = "";
+    caixaPerguntas.textContent = "pergunta";
     textoResultado.textContent = historiaFinal;
-    caixaAlternativa.textContent = "";
+    caixaAlternativa.textContent = "resposta";
 }
 
 mostraPergunta();
